@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function returnRepeated(){
+            let mainList = document.getElementById("mainList").value;
+            let list = mainList.split(",")
+            let intList = []
+            for (let i = 0; i < list.length; i++){
+                intList.push(parseInt(list[i]));
+            }
+
+
+
+            let ultimo = 0;
+            let comparador = 1;
+            for (let i = 0; i < intList.length; i++){
+                var cont = 0;
+                for (let j = 0; j < intList.length; j++){
+                    if(intList[j] == intList[i]){
+                        cont++;
+                    }
+                    if (cont >= comparador){
+                        ultimo = intList[i]
+                        comparador = cont;
+                    }
+                }
+                
+            }
+            console.log(ultimo)
+            document.getElementById("result").innerText = "El ultimo numero que se repite mas veces es " + ultimo + " con " + comparador + " entradas."
+
+        }
+
+    </script>
+
+</head>
+<body class="container">
+    <div id="maindiv" class="container-fluid">
+        <div id="row align-items-center">
+            <div id="col">
+                <div class="card">
+                    <div class="card-header">
+                      Featured
+                    </div>
+                    <div class="col">
+                        <label for=""></label>
+                        <input id="mainList" class="form-control" type="text" placeholder="Ingresa numeros separados por comas">
+                        <button class="btn btn-primary" onclick="returnRepeated()">Mostrar</button>
+                        <div id="result"></div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>

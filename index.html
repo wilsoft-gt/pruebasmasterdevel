@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #mainButton {
+            background-color: red;
+        }
+    </style>
+    <script>
+        function aumentar(){
+            let numero = document.getElementById("numero")
+            let valor = parseInt(numero.value)
+            console.log(numero.value)
+            
+            numero.value = valor + 1
+
+        }
+    </script>
+</head>
+<body>
+    <button onclick="aumentar()" id="mainButton">Click</button>
+    <input type="number" name="numero" id="numero" value="0">
+</body>
+</html>

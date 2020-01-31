@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+    </style>
+    <script>
+        function jsonParser(){
+            $.getJSON("https://jsonplaceholder.typicode.com/posts", function(blogs){
+                let postData = ""
+                let data = ""
+                $.getJSON("https://jsonplaceholder.typicode.com/comments", function (comments){
+                    for (let i= 0; i < blogs.length; i++){
+                        postData = blogs[i]
+                        data = data + "<h1 class='titulo'>"+postData.id+ ") "+postData.title+"</h1><p class='parrafo'>"+postData.body+"</p><h2 class='titleComments'>Comments</h2>"
+                        let commentsData = ""
+                        for (let j = 0; j < comments.length; j++){
+                            if (comments[j].postId == postData.id){
+                                commentsData = commentsData + "<hr><div class='singleComment'>Name: "+comments[j].name+"<br>Email: "+comments[j].email+"<br>Body: "+ comments[j].body+"</div>"
+                            }
+                        }
+                        commentsData = "<div class='commentsDiv'>"+commentsData+"</div>"
+                        data = data + commentsData
+                        data = "<div class='postDiv'>"+data+"</div>"
+                        document.getElementById("test").innerHTML = data
+                    }
+                })
+            });
+        }    
+    </script>
+</head>
+<body onload="jsonParser()">
+    <div id="test">
+
+    </div>
+</body>
+</html>
